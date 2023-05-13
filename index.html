@@ -1,1 +1,34 @@
-cdscsc
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Checkbox with Local Storage</title>
+</head>
+<body>
+
+	<label>
+		<input type="checkbox" id="myCheckbox">
+		My Checkbox
+	</label>
+
+	<script>
+		// Check if the browser supports local storage
+		if (typeof(Storage) !== "undefined") {
+
+			// Retrieve the checkbox state from local storage
+			var isChecked = localStorage.getItem("myCheckboxState");
+
+			// Set the checkbox state if it exists in local storage
+			if (isChecked === "true") {
+				document.getElementById("myCheckbox").checked = true;
+			}
+
+			// Save the checkbox state to local storage whenever it's clicked
+			document.getElementById("myCheckbox").addEventListener("click", function() {
+				localStorage.setItem("myCheckboxState", this.checked);
+			});
+		}
+	</script>
+
+</body>
+</html>
+
